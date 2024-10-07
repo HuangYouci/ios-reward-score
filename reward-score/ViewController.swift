@@ -7,6 +7,8 @@
 
 import UIKit
 
+var rewardScore: Int = 0
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var mainGreeting: UILabel!
@@ -23,7 +25,11 @@ class ViewController: UIViewController {
         // 檢查密碼
             if modPassword.text == "950509" {
         // 密碼正確，更新 mainScore
-                mainScore.text = modChange.text
+                if let updateScoreText = modChange.text, let updateScoreInt = Int(updateScoreText) {
+                    updateScore(updateScoreInt)
+                } else {
+                    print("Invalid input")
+                }
                 modPassword.text = ""
                 } else {
                     modPassword.text = "密碼錯誤!!"
@@ -32,8 +38,12 @@ class ViewController: UIViewController {
                 modChange.text = ""
     }
     
+    func updateScore(_ score: Int) {
+        rewardScore = score
+        mainScore.text = "\(rewardScore)"
+    }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-     
             self.view?.endEditing(true)
      }
     
@@ -56,9 +66,6 @@ class ViewController: UIViewController {
                 } else {
                     mainGreeting.text = "晚安"
                 }
-        
-        // 分數歸零
-        mainScore.text = "0"
     }
 }
 
