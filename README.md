@@ -5,7 +5,7 @@
 * 2024/10/08: App Creation.
   * 創建了一個 Xcode iOS App 專案，並建立基本視圖（view），大致探索版面配置。
   * 在 UI 中的一個文字欄位，設定函數程式：針對現在時間做問候語。
-  * ```
+    ```
     // 取得當前時間
         let currentHour = Calendar.current.component(.hour, from: Date())
                 
